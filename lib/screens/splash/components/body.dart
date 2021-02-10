@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tutorialscreenapp_flutter/components/default_button.dart';
 import 'package:tutorialscreenapp_flutter/constant.dart';
 import 'package:tutorialscreenapp_flutter/screens/splash/components/splash_content.dart';
 import 'package:tutorialscreenapp_flutter/size_config.dart';
@@ -65,7 +66,10 @@ class _BodyState extends State<Body> {
                     Spacer(
                       flex: 3,
                     ),
-                    DefaultButton(),
+                    DefaultButton(
+                      text: "Continue",
+                      press: () {},
+                    ),
                     Spacer(),
                   ],
                 ),
@@ -86,34 +90,6 @@ class _BodyState extends State<Body> {
       decoration: BoxDecoration(
           color: currentPage == index ? kPrimaryColor : Color(0xFFD8D8D8),
           borderRadius: BorderRadius.circular(3)),
-    );
-  }
-}
-
-class DefaultButton extends StatelessWidget {
-  const DefaultButton({
-    Key key,
-    this.text,
-    this.press,
-  }) : super(key: key);
-
-  final String text;
-  final Function press;
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      height: getProportionateScreenHeight(56),
-      child: FlatButton(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        color: kPrimaryColor,
-        onPressed: () {},
-        child: Text(
-          "Continue",
-          style: TextStyle(
-              fontSize: getProportionateScreenWidth(18), color: Colors.white),
-        ),
-      ),
     );
   }
 }
