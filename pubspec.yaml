@@ -71,10 +71,12 @@ flutter:
         - asset: assets/muli/Muli-Semi-BoldItalic.ttf
         - asset: assets/muli/Muli-LightItalic.ttf
         - asset: assets/muli/Muli-Light.ttf
+          weight : 300
         - asset: assets/muli/Muli-ExtraLightItalic.ttf
         - asset: assets/muli/Muli-ExtraLight.ttf
         - asset: assets/muli/Muli-BoldItalic.ttf
         - asset: assets/muli/Muli-Bold.ttf
+          weight : 700
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
