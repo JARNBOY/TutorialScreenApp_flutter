@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:flutter/material.dart';
 import 'package:tutorialscreenapp_flutter/screens/splash/splash_screen.dart';
 

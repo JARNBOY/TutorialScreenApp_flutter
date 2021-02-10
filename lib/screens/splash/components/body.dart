@@ -67,7 +67,7 @@ class _BodyState extends State<Body> {
                       flex: 3,
                     ),
                     DefaultButton(
-                      text: "Continue",
+                      text: "Skip",
                       press: () {},
                     ),
                     Spacer(),
