@@ -17,7 +17,12 @@ class _BodyState extends State<Body> {
           children: [
             Expanded(
               flex: 3,
-              child: SplashContent(),
+              child: PageView.builder(
+                itemBuilder: (context, index) => SplashContent(
+                  image: "assets/images/splash_1.png",
+                  text: "Welcome to E-Comemerce,Let's shop!",
+                ),
+              ),
             ),
             Expanded(
               flex: 2,
@@ -33,8 +38,10 @@ class _BodyState extends State<Body> {
 class SplashContent extends StatelessWidget {
   const SplashContent({
     Key key,
+    this.text,
+    this.image,
   }) : super(key: key);
-
+  final String text, image;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -47,10 +54,10 @@ class SplashContent extends StatelessWidget {
               color: kPrimaryColor,
               fontWeight: FontWeight.bold),
         ),
-        Text("Welcome to E-Comemerce,Let's shop!"),
+        Text(text),
         Spacer(),
         Image.asset(
-          "assets/images/splash_1.png",
+          image,
           height: getProportionateScreenHeight(265),
           width: getProportionateScreenWidth(235),
         )
