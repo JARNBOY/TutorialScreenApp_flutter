@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:tutorialscreenapp_flutter/components/custom_suffix_icons.dart';
-import 'package:tutorialscreenapp_flutter/constant.dart';
+import 'package:tutorialscreenapp_flutter/components/default_button.dart';
+import 'package:tutorialscreenapp_flutter/components/form_error.dart';
 import 'package:tutorialscreenapp_flutter/size_config.dart';
 
 class BodySignIn extends StatelessWidget {
@@ -40,23 +40,61 @@ class SignForm extends StatefulWidget {
 }
 
 class _SignFormState extends State<SignForm> {
+  final _formKey = GlobalKey<FormState>();
+  final List<String> errors = ["test error"];
   @override
   Widget build(BuildContext context) {
     return Form(
+      key: _formKey,
       child: Column(
         children: [
-          TextFormField(
-            keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(
-                labelText: "Email",
-                hintText: "Enter your Email",
-                floatingLabelBehavior: FloatingLabelBehavior.always,
-                suffixIcon: CustomSuffixIcons(
-                  svgIcon: "assets/icons/Mail.svg",
-                )),
-          )
+          emailTextFormField(),
+          SizedBox(
+            height: 20,
+          ),
+          passwordTextFormField(),
+          SizedBox(
+            height: 20,
+          ),
+          FormErrors(errors: errors),
+          DefaultButton(text: "Continue", press: () {}),
         ],
       ),
+    );
+  }
+
+  TextFormField emailTextFormField() {
+    return TextFormField(
+      keyboardType: TextInputType.emailAddress,
+      validator: (value) {
+        if (value.isEmpty) {
+          setState(() {
+            errors.add("Please enter your email");
+          });
+        }
+        return null;
+      },
+      decoration: InputDecoration(
+          labelText: "Email",
+          hintText: "Enter your Email",
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+          suffixIcon: CustomSuffixIcons(
+            svgIcon: "assets/icons/Mail.svg",
+          )),
+    );
+  }
+
+  TextFormField passwordTextFormField() {
+    return TextFormField(
+      obscureText: true,
+      keyboardType: TextInputType.emailAddress,
+      decoration: InputDecoration(
+          labelText: "Password",
+          hintText: "Enter your Password",
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+          suffixIcon: CustomSuffixIcons(
+            svgIcon: "assets/icons/Mail.svg",
+          )),
     );
   }
 }
