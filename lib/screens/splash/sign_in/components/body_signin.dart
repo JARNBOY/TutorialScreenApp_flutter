@@ -41,7 +41,7 @@ class SignForm extends StatefulWidget {
 
 class _SignFormState extends State<SignForm> {
   final _formKey = GlobalKey<FormState>();
-  final List<String> errors = ["test error"];
+  final List<String> errors = [];
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -57,7 +57,13 @@ class _SignFormState extends State<SignForm> {
             height: 20,
           ),
           FormErrors(errors: errors),
-          DefaultButton(text: "Continue", press: () {}),
+          DefaultButton(
+              text: "Continue",
+              press: () {
+                if (_formKey.currentState.validate()) {
+                  _formKey.currentState.save();
+                }
+              }),
         ],
       ),
     );
