@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:tutorialscreenapp_flutter/components/custom_suffix_icons.dart';
 import 'package:tutorialscreenapp_flutter/constant.dart';
 import 'package:tutorialscreenapp_flutter/size_config.dart';
 
@@ -45,20 +46,13 @@ class _SignFormState extends State<SignForm> {
       child: Column(
         children: [
           TextFormField(
+            keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
                 labelText: "Email",
                 hintText: "Enter your Email",
                 floatingLabelBehavior: FloatingLabelBehavior.always,
-                suffixIcon: Padding(
-                  padding: EdgeInsets.fromLTRB(
-                      0,
-                      getProportionateScreenWidth(20),
-                      getProportionateScreenWidth(20),
-                      getProportionateScreenWidth(20)),
-                  child: SvgPicture.asset(
-                    "assets/icons/Mail.svg",
-                    height: getProportionateScreenWidth(20),
-                  ),
+                suffixIcon: CustomSuffixIcons(
+                  svgIcon: "assets/icons/Mail.svg",
                 )),
           )
         ],
