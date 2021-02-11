@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tutorialscreenapp_flutter/components/no_account_text.dart';
 import 'package:tutorialscreenapp_flutter/components/social_card.dart';
-import 'package:tutorialscreenapp_flutter/constant.dart';
 import 'package:tutorialscreenapp_flutter/screens/splash/sign_in/components/sign_form.dart';
 import 'package:tutorialscreenapp_flutter/size_config.dart';
 
@@ -55,21 +55,7 @@ class BodySignIn extends StatelessWidget {
                 ],
               ),
               SizedBox(height: getProportionateScreenHeight(20)),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Don't have an account? ",
-                    style: TextStyle(fontSize: getProportionateScreenWidth(16)),
-                  ),
-                  Text(
-                    "Sign Up",
-                    style: TextStyle(
-                        fontSize: getProportionateScreenWidth(16),
-                        color: kPrimaryColor),
-                  )
-                ],
-              )
+              NoAccountText()
             ],
           ),
         ),
