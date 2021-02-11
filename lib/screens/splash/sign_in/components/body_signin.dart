@@ -43,6 +43,8 @@ class SignForm extends StatefulWidget {
 class _SignFormState extends State<SignForm> {
   final _formKey = GlobalKey<FormState>();
   final List<String> errors = [];
+  String email;
+  String password;
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -58,6 +60,9 @@ class _SignFormState extends State<SignForm> {
             height: 20,
           ),
           FormErrors(errors: errors),
+          SizedBox(
+            height: 20,
+          ),
           DefaultButton(
               text: "Continue",
               press: () {
@@ -73,6 +78,7 @@ class _SignFormState extends State<SignForm> {
   TextFormField emailTextFormField() {
     return TextFormField(
       keyboardType: TextInputType.emailAddress,
+      onSaved: (newValue) => email = newValue,
       onChanged: (value) {
         if (value.isNotEmpty && errors.contains(kEmailNullError)) {
           setState(() {
@@ -116,12 +122,40 @@ class _SignFormState extends State<SignForm> {
     return TextFormField(
       obscureText: true,
       keyboardType: TextInputType.emailAddress,
+      onSaved: (newValue) => password = newValue,
+      onChanged: (value) {
+        if (value.isNotEmpty && errors.contains(kPassNullError)) {
+          setState(() {
+            errors.remove(kPassNullError);
+          });
+        }
+
+        if (value.length >= 8 && errors.contains(kShortPassError)) {
+          setState(() {
+            errors.remove(kShortPassError);
+          });
+        }
+      },
+      validator: (value) {
+        if (value.isEmpty && !errors.contains(kPassNullError)) {
+          setState(() {
+            errors.add(kPassNullError);
+          });
+        }
+
+        if (value.length < 8 && !errors.contains(kShortPassError)) {
+          setState(() {
+            errors.add(kShortPassError);
+          });
+        }
+        return null;
+      },
       decoration: InputDecoration(
           labelText: "Password",
           hintText: "Enter your Password",
           floatingLabelBehavior: FloatingLabelBehavior.always,
           suffixIcon: CustomSuffixIcons(
-            svgIcon: "assets/icons/Mail.svg",
+            svgIcon: "assets/icons/Lock.svg",
           )),
     );
   }
