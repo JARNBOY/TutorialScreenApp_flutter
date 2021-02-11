@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tutorialscreenapp_flutter/components/custom_suffix_icons.dart';
 import 'package:tutorialscreenapp_flutter/components/default_button.dart';
 import 'package:tutorialscreenapp_flutter/components/form_error.dart';
+import 'package:tutorialscreenapp_flutter/constant.dart';
 import 'package:tutorialscreenapp_flutter/size_config.dart';
 
 class BodySignIn extends StatelessWidget {
@@ -72,10 +73,31 @@ class _SignFormState extends State<SignForm> {
   TextFormField emailTextFormField() {
     return TextFormField(
       keyboardType: TextInputType.emailAddress,
-      validator: (value) {
-        if (value.isEmpty) {
+      onChanged: (value) {
+        if (value.isNotEmpty && errors.contains(kEmailNullError)) {
           setState(() {
-            errors.add("Please enter your email");
+            errors.remove(kEmailNullError);
+          });
+        }
+
+        if (emailValidatorRegExp.hasMatch(value) &&
+            errors.contains(kInvalidEmailError)) {
+          setState(() {
+            errors.remove(kInvalidEmailError);
+          });
+        }
+      },
+      validator: (value) {
+        if (value.isEmpty && !errors.contains(kEmailNullError)) {
+          setState(() {
+            errors.add(kEmailNullError);
+          });
+        }
+
+        if (!emailValidatorRegExp.hasMatch(value) &&
+            !errors.contains(kInvalidEmailError)) {
+          setState(() {
+            errors.add(kInvalidEmailError);
           });
         }
         return null;
