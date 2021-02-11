@@ -70,6 +70,7 @@ class _BodyState extends State<Body> {
                     DefaultButton(
                       text: "Skip",
                       press: () {
+                        print("Skip click");
                         Navigator.pushNamed(context, SignInScreen.routeName);
                       },
                     ),
