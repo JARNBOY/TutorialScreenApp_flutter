@@ -37,26 +37,30 @@ class _SignUpFormState extends State<SignUpForm> {
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
-      child: Column(
-        children: [
-          emailTextFormField(),
-          SizedBox(height: getProportionateScreenHeight(30)),
-          passwordTextFormField(),
-          SizedBox(height: getProportionateScreenHeight(30)),
-          confirmPasswordTextFormField(),
-          FormErrors(
-            errors: errors,
-          ),
-          SizedBox(height: getProportionateScreenHeight(40)),
-          DefaultButton(
-            text: "Register",
-            press: () {
-              if (_formKey.currentState.validate()) {
-                //Go to Complete Profile  Page
-              }
-            },
-          )
-        ],
+      child: Padding(
+        padding:
+            EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+        child: Column(
+          children: [
+            emailTextFormField(),
+            SizedBox(height: getProportionateScreenHeight(30)),
+            passwordTextFormField(),
+            SizedBox(height: getProportionateScreenHeight(30)),
+            confirmPasswordTextFormField(),
+            FormErrors(
+              errors: errors,
+            ),
+            SizedBox(height: getProportionateScreenHeight(40)),
+            DefaultButton(
+              text: "Register",
+              press: () {
+                if (_formKey.currentState.validate()) {
+                  //Go to Complete Profile  Page
+                }
+              },
+            )
+          ],
+        ),
       ),
     );
   }
