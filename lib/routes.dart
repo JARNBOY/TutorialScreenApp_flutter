@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tutorialscreenapp_flutter/screens/forgot_password/forgot_password_screen.dart';
 import 'package:tutorialscreenapp_flutter/screens/login_success/login_success.dart';
+import 'package:tutorialscreenapp_flutter/screens/otp/otp_screen.dart';
 import 'package:tutorialscreenapp_flutter/screens/sign_in/sign_in_screen.dart';
 import 'package:tutorialscreenapp_flutter/screens/sign_up/sign_up_screen.dart';
 import 'package:tutorialscreenapp_flutter/screens/splash/splash_screen.dart';
@@ -14,5 +15,6 @@ final Map<String, WidgetBuilder> routes = {
   ForgotPasswordScreen.routeName: (context) => ForgotPasswordScreen(),
   LoginSuccessScreen.routeName: (context) => LoginSuccessScreen(),
   SignUpScreen.routeName: (context) => SignUpScreen(),
-  CompleteProfileScreen.routeName: (context) => CompleteProfileScreen()
+  CompleteProfileScreen.routeName: (context) => CompleteProfileScreen(),
+  OTPScreen.routeName: (context) => OTPScreen()
 };
