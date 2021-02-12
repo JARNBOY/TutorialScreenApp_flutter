@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tutorialscreenapp_flutter/constant.dart';
-import 'package:tutorialscreenapp_flutter/screens/splash/forgot_password/forgot_password_screen.dart';
 import 'package:tutorialscreenapp_flutter/screens/splash/sign_up/sign_up_screen.dart';
 import 'package:tutorialscreenapp_flutter/size_config.dart';
 
