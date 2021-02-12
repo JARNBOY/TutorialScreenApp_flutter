@@ -1,54 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:tutorialscreenapp_flutter/constant.dart';
+import 'package:tutorialscreenapp_flutter/size_config.dart';
+
+import 'complete_profile_form.dart';
 
 class BodyCompleteProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text("Complete Profile", style: headingStyle),
-        Text(
-          "Complete your detail or continue \nwith social word",
-          textAlign: TextAlign.center,
+    return SizedBox(
+      width: double.infinity,
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(height: SizeConfig.screenHeight * 0.02),
+            Text("Complete Profile", style: headingStyle),
+            Text(
+              "Complete your detail or continue \nwith social word",
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: SizeConfig.screenHeight * 0.05),
+            CompleteProfileForm(),
+            SizedBox(height: getProportionateScreenHeight(30)),
+            Text(
+              "By continue your confirm that you agree \nwith our Term and Condition",
+              textAlign: TextAlign.center,
+            )
+          ],
         ),
-        CompleteProfileForm()
-      ],
-    );
-  }
-}
-
-class CompleteProfileForm extends StatefulWidget {
-  @override
-  _CompleteProfileFormState createState() => _CompleteProfileFormState();
-}
-
-class _CompleteProfileFormState extends State<CompleteProfileForm> {
-  final _formKey = GlobalKey<FormState>();
-  final List<String> errors = [];
-  String email;
-  String password;
-  String confirmPassword;
-  void addError({String error}) {
-    if (!errors.contains(error)) {
-      setState(() {
-        errors.add(error);
-      });
-    }
-  }
-
-  void removeError({String error}) {
-    if (errors.contains(error)) {
-      setState(() {
-        errors.remove(error);
-      });
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Form(
-      child: Column(
-        children: [],
       ),
     );
   }
