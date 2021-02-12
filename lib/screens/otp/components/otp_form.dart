@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tutorialscreenapp_flutter/components/default_button.dart';
+import 'package:tutorialscreenapp_flutter/screens/login_success/login_success.dart';
 
 import '../../../constant.dart';
 import '../../../size_config.dart';
@@ -112,7 +113,11 @@ class _OTPFormState extends State<OTPForm> {
             ],
           ),
           SizedBox(height: SizeConfig.screenHeight * 0.15),
-          DefaultButton(text: "Contunie", press: () {}),
+          DefaultButton(
+              text: "Continue",
+              press: () {
+                Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+              }),
         ],
       ),
     );
