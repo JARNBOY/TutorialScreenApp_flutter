@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:tutorialscreenapp_flutter/constant.dart';
 import 'package:tutorialscreenapp_flutter/screens/home/components/search_field.dart';
+import 'package:tutorialscreenapp_flutter/screens/home/components/section_title.dart';
+import 'package:tutorialscreenapp_flutter/screens/home/components/special_offers.dart';
 import 'package:tutorialscreenapp_flutter/size_config.dart';
 
 import 'categories.dart';
@@ -21,7 +23,9 @@ class BodyHome extends StatelessWidget {
             SizedBox(height: getProportionateScreenWidth(30)),
             DiscountBanner(),
             SizedBox(height: getProportionateScreenWidth(30)),
-            Categories()
+            Categories(),
+            SizedBox(height: getProportionateScreenWidth(30)),
+            SpecialOffers()
           ],
         ),
       ),
