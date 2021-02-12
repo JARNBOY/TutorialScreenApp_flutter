@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:tutorialscreenapp_flutter/constant.dart';
+import 'package:tutorialscreenapp_flutter/models/Product.dart';
+import 'package:tutorialscreenapp_flutter/screens/home/components/poppular_product.dart';
+import 'package:tutorialscreenapp_flutter/screens/home/components/product_card.dart';
 import 'package:tutorialscreenapp_flutter/screens/home/components/search_field.dart';
 import 'package:tutorialscreenapp_flutter/screens/home/components/section_title.dart';
 import 'package:tutorialscreenapp_flutter/screens/home/components/special_offers.dart';
@@ -27,10 +30,8 @@ class BodyHome extends StatelessWidget {
             SizedBox(height: getProportionateScreenWidth(30)),
             SpecialOffers(),
             SizedBox(height: getProportionateScreenWidth(30)),
-            SectionTitle(
-              text: "Popular Product",
-              press: () {},
-            )
+            PoppularProduct(),
+            SizedBox(height: getProportionateScreenWidth(30))
           ],
         ),
       ),
