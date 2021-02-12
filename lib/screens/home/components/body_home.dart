@@ -25,7 +25,12 @@ class BodyHome extends StatelessWidget {
             SizedBox(height: getProportionateScreenWidth(30)),
             Categories(),
             SizedBox(height: getProportionateScreenWidth(30)),
-            SpecialOffers()
+            SpecialOffers(),
+            SizedBox(height: getProportionateScreenWidth(30)),
+            SectionTitle(
+              text: "Popular Product",
+              press: () {},
+            )
           ],
         ),
       ),
