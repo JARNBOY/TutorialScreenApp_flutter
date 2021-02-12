@@ -19,6 +19,23 @@ class _SignFormState extends State<SignForm> {
   String email;
   String password;
   bool remember = false;
+
+  void addError({String error}) {
+    if (!errors.contains(error)) {
+      setState(() {
+        errors.add(error);
+      });
+    }
+  }
+
+  void removeError({String error}) {
+    if (errors.contains(error)) {
+      setState(() {
+        errors.remove(error);
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -81,30 +98,22 @@ class _SignFormState extends State<SignForm> {
       onSaved: (newValue) => email = newValue,
       onChanged: (value) {
         if (value.isNotEmpty && errors.contains(kEmailNullError)) {
-          setState(() {
-            errors.remove(kEmailNullError);
-          });
+          removeError(error: kEmailNullError);
         }
 
         if (emailValidatorRegExp.hasMatch(value) &&
             errors.contains(kInvalidEmailError)) {
-          setState(() {
-            errors.remove(kInvalidEmailError);
-          });
+          removeError(error: kInvalidEmailError);
         }
       },
       validator: (value) {
         if (value.isEmpty && !errors.contains(kEmailNullError)) {
-          setState(() {
-            errors.add(kEmailNullError);
-          });
+          addError(error: kEmailNullError);
         }
 
         if (!emailValidatorRegExp.hasMatch(value) &&
             !errors.contains(kInvalidEmailError)) {
-          setState(() {
-            errors.add(kInvalidEmailError);
-          });
+          addError(error: kInvalidEmailError);
         }
         return null;
       },
