@@ -4,7 +4,7 @@ import 'package:tutorialscreenapp_flutter/components/default_button.dart';
 import 'package:tutorialscreenapp_flutter/components/form_error.dart';
 import 'package:tutorialscreenapp_flutter/components/social_card.dart';
 import 'package:tutorialscreenapp_flutter/constant.dart';
-import 'package:tutorialscreenapp_flutter/screens/splash/sign_up/components/sign_up_form.dart';
+import 'package:tutorialscreenapp_flutter/screens/sign_up/components/sign_up_form.dart';
 import 'package:tutorialscreenapp_flutter/size_config.dart';
 
 class BodySignUpScreen extends StatelessWidget {

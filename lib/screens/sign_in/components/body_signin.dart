@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tutorialscreenapp_flutter/components/no_account_text.dart';
 import 'package:tutorialscreenapp_flutter/components/social_card.dart';
-import 'package:tutorialscreenapp_flutter/screens/splash/sign_in/components/sign_form.dart';
+import 'package:tutorialscreenapp_flutter/screens/sign_in/components/sign_form.dart';
 import 'package:tutorialscreenapp_flutter/size_config.dart';
 
 class BodySignIn extends StatelessWidget {

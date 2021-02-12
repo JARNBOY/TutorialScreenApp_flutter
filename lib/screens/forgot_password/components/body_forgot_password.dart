@@ -5,7 +5,7 @@ import 'package:tutorialscreenapp_flutter/components/form_error.dart';
 import 'package:tutorialscreenapp_flutter/components/no_account_text.dart';
 import 'package:tutorialscreenapp_flutter/size_config.dart';
 
-import '../../../../constant.dart';
+import '../../../constant.dart';
 
 class BodyForgotPassword extends StatefulWidget {
   @override

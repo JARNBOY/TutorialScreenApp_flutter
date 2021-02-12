@@ -2,22 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:tutorialscreenapp_flutter/components/custom_suffix_icons.dart';
 import 'package:tutorialscreenapp_flutter/components/default_button.dart';
 import 'package:tutorialscreenapp_flutter/components/form_error.dart';
-import 'package:tutorialscreenapp_flutter/screens/complete_profile/complete_profile.dart';
+import 'package:tutorialscreenapp_flutter/constant.dart';
+import 'package:tutorialscreenapp_flutter/screens/forgot_password/forgot_password_screen.dart';
+import 'package:tutorialscreenapp_flutter/screens/login_success/login_success.dart';
 
-import '../../../../constant.dart';
-import '../../../../size_config.dart';
+import '../../../size_config.dart';
 
-class SignUpForm extends StatefulWidget {
+class SignForm extends StatefulWidget {
   @override
-  _SignUpFormState createState() => _SignUpFormState();
+  _SignFormState createState() => _SignFormState();
 }
 
-class _SignUpFormState extends State<SignUpForm> {
+class _SignFormState extends State<SignForm> {
   final _formKey = GlobalKey<FormState>();
   final List<String> errors = [];
   String email;
   String password;
-  String confirmPassword;
+  bool remember = false;
+
   void addError({String error}) {
     if (!errors.contains(error)) {
       setState(() {
@@ -38,31 +40,54 @@ class _SignUpFormState extends State<SignUpForm> {
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
-      child: Padding(
-        padding:
-            EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
-        child: Column(
-          children: [
-            emailTextFormField(),
-            SizedBox(height: getProportionateScreenHeight(30)),
-            passwordTextFormField(),
-            SizedBox(height: getProportionateScreenHeight(30)),
-            confirmPasswordTextFormField(),
-            FormErrors(
-              errors: errors,
-            ),
-            SizedBox(height: getProportionateScreenHeight(40)),
-            DefaultButton(
-              text: "Register",
+      child: Column(
+        children: [
+          emailTextFormField(),
+          SizedBox(
+            height: 20,
+          ),
+          passwordTextFormField(),
+          SizedBox(
+            height: 20,
+          ),
+          FormErrors(errors: errors),
+          SizedBox(
+            height: 20,
+          ),
+          Row(
+            children: [
+              Checkbox(
+                value: remember,
+                activeColor: kPrimaryColor,
+                onChanged: (value) {
+                  setState(() {
+                    remember = value;
+                  });
+                },
+              ),
+              Text("Remember Me"),
+              Spacer(),
+              GestureDetector(
+                onTap: () => Navigator.popAndPushNamed(
+                    context, ForgotPasswordScreen.routeName),
+                child: Text(
+                  "Forgot Password",
+                  style: TextStyle(decoration: TextDecoration.underline),
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: getProportionateScreenHeight(20)),
+          DefaultButton(
+              text: "Continue",
               press: () {
                 if (_formKey.currentState.validate()) {
-                  //Go to Complete Profile  Page
-                  Navigator.pushNamed(context, CompleteProfileScreen.routeName);
+                  _formKey.currentState.save();
+                  //if valid success
+                  Navigator.pushNamed(context, LoginSuccessScreen.routeName);
                 }
-              },
-            )
-          ],
-        ),
+              }),
+        ],
       ),
     );
   }
@@ -118,8 +143,6 @@ class _SignUpFormState extends State<SignUpForm> {
             errors.remove(kShortPassError);
           });
         }
-
-        password = value;
       },
       validator: (value) {
         if (value.isEmpty && !errors.contains(kPassNullError)) {
@@ -138,41 +161,6 @@ class _SignUpFormState extends State<SignUpForm> {
       decoration: InputDecoration(
           labelText: "Password",
           hintText: "Enter your Password",
-          floatingLabelBehavior: FloatingLabelBehavior.always,
-          suffixIcon: CustomSuffixIcons(
-            svgIcon: "assets/icons/Lock.svg",
-          )),
-    );
-  }
-
-  TextFormField confirmPasswordTextFormField() {
-    return TextFormField(
-      obscureText: true,
-      onSaved: (newValue) => confirmPassword = newValue,
-      onChanged: (value) {
-        if (password == confirmPassword) {
-          setState(() {
-            errors.remove(kMatchPassError);
-          });
-        }
-
-        confirmPassword = value;
-      },
-      validator: (value) {
-        if (value.isEmpty) {
-          return "";
-        }
-
-        if (password != confirmPassword) {
-          setState(() {
-            errors.add(kMatchPassError);
-          });
-        }
-        return null;
-      },
-      decoration: InputDecoration(
-          labelText: "Confirm Password",
-          hintText: "Re-enter your Password",
           floatingLabelBehavior: FloatingLabelBehavior.always,
           suffixIcon: CustomSuffixIcons(
             svgIcon: "assets/icons/Lock.svg",
