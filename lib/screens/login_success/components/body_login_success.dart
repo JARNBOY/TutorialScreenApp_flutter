@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tutorialscreenapp_flutter/components/default_button.dart';
+import 'package:tutorialscreenapp_flutter/screens/home/home_screen.dart';
 import 'package:tutorialscreenapp_flutter/size_config.dart';
 
 class BodyLoginSuccess extends StatelessWidget {
@@ -30,7 +31,8 @@ class BodyLoginSuccess extends StatelessWidget {
           child: DefaultButton(
             text: "Back to home",
             press: () {
-              print("Back to home click");
+              //Go to home
+              Navigator.pushNamed(context, HomeScreen.routeName);
             },
           ),
         ),
