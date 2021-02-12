@@ -5,6 +5,8 @@ import 'package:tutorialscreenapp_flutter/screens/splash/sign_in/sign_in_screen.
 import 'package:tutorialscreenapp_flutter/screens/splash/sign_up/sign_up_screen.dart';
 import 'package:tutorialscreenapp_flutter/screens/splash/splash_screen.dart';
 
+import 'screens/complete_profile/complete_profile.dart';
+
 //We use  name route
 //All our route will be avialable here
 final Map<String, WidgetBuilder> routes = {
@@ -12,5 +14,6 @@ final Map<String, WidgetBuilder> routes = {
   SignInScreen.routeName: (context) => SignInScreen(),
   ForgotPasswordScreen.routeName: (context) => ForgotPasswordScreen(),
   LoginSuccessScreen.routeName: (context) => LoginSuccessScreen(),
-  SignUpScreen.routeName: (context) => SignUpScreen()
+  SignUpScreen.routeName: (context) => SignUpScreen(),
+  CompleteProfileScreen.routeName: (context) => CompleteProfileScreen()
 };

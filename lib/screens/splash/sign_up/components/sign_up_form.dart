@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tutorialscreenapp_flutter/components/custom_suffix_icons.dart';
 import 'package:tutorialscreenapp_flutter/components/default_button.dart';
 import 'package:tutorialscreenapp_flutter/components/form_error.dart';
+import 'package:tutorialscreenapp_flutter/screens/complete_profile/complete_profile.dart';
 
 import '../../../../constant.dart';
 import '../../../../size_config.dart';
@@ -56,6 +57,7 @@ class _SignUpFormState extends State<SignUpForm> {
               press: () {
                 if (_formKey.currentState.validate()) {
                   //Go to Complete Profile  Page
+                  Navigator.pushNamed(context, CompleteProfileScreen.routeName);
                 }
               },
             )
