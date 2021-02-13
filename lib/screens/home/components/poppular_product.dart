@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tutorialscreenapp_flutter/models/Product.dart';
+import 'package:tutorialscreenapp_flutter/screens/detail/detail_screen.dart';
 import 'package:tutorialscreenapp_flutter/screens/home/components/product_card.dart';
 import 'package:tutorialscreenapp_flutter/screens/home/components/section_title.dart';
 
@@ -29,6 +30,9 @@ class PoppularProduct extends StatelessWidget {
                   demoProducts.length,
                   (index) => ProductCard(
                         product: demoProducts[index],
+                        press: () {
+                          Navigator.pushNamed(context, DetailScreen.routeName);
+                        },
                       )),
               SizedBox(
                 width: getProportionateScreenWidth(20),
