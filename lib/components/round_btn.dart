@@ -18,7 +18,7 @@ class RoundIconsButton extends StatelessWidget {
       height: getProportionateScreenHeight(40),
       width: getProportionateScreenHeight(40),
       child: FlatButton(
-        padding: EdgeInsets.only(left: 8),
+        padding: EdgeInsets.zero,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
         color: Colors.white,
         child: Icon(iconData),
