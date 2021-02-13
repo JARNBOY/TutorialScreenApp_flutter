@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tutorialscreenapp_flutter/constant.dart';
 import 'package:tutorialscreenapp_flutter/models/Product.dart';
+import 'package:tutorialscreenapp_flutter/screens/detail/components/product_image.dart';
 import 'package:tutorialscreenapp_flutter/size_config.dart';
 
 class BodyDetail extends StatelessWidget {
@@ -10,65 +11,5 @@ class BodyDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ProductImage(product: product);
-  }
-}
-
-class ProductImage extends StatefulWidget {
-  const ProductImage({
-    Key key,
-    @required this.product,
-  }) : super(key: key);
-
-  final Product product;
-
-  @override
-  _ProductImageState createState() => _ProductImageState();
-}
-
-class _ProductImageState extends State<ProductImage> {
-  int selectedImg = 0;
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(
-          width: getProportionateScreenWidth(238),
-          child: AspectRatio(
-            aspectRatio: 1,
-            child: Image.asset(widget.product.images[0]),
-          ),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ...List.generate(widget.product.images.length,
-                (index) => smallPreviewProduct(index))
-          ],
-        )
-      ],
-    );
-  }
-
-  GestureDetector smallPreviewProduct(int index) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          selectedImg = index;
-        });
-      },
-      child: Container(
-        margin: EdgeInsets.only(right: getProportionateScreenWidth(16)),
-        padding: EdgeInsets.all(getProportionateScreenWidth(6)),
-        height: getProportionateScreenWidth(48),
-        width: getProportionateScreenWidth(48),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: Colors.white,
-            border: Border.all(
-                color:
-                    selectedImg == index ? kPrimaryColor : Colors.transparent)),
-        child: Image.asset(widget.product.images[index]),
-      ),
-    );
   }
 }
