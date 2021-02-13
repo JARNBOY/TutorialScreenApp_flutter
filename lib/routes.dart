@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tutorialscreenapp_flutter/screens/cart/cart_screen.dart';
 import 'package:tutorialscreenapp_flutter/screens/detail/detail_screen.dart';
 import 'package:tutorialscreenapp_flutter/screens/forgot_password/forgot_password_screen.dart';
 import 'package:tutorialscreenapp_flutter/screens/home/home_screen.dart';
@@ -20,5 +21,6 @@ final Map<String, WidgetBuilder> routes = {
   CompleteProfileScreen.routeName: (context) => CompleteProfileScreen(),
   OTPScreen.routeName: (context) => OTPScreen(),
   HomeScreen.routeName: (context) => HomeScreen(),
-  DetailScreen.routeName: (context) => DetailScreen()
+  DetailScreen.routeName: (context) => DetailScreen(),
+  CartScreen.routeName: (context) => CartScreen(),
 };
