@@ -22,6 +22,10 @@ class Product {
 }
 
 // Our demo Products
+int selectColorIndex = 0;
+void resetSelect() {
+  selectColorIndex = 0;
+}
 
 List<Product> demoProducts = [
   Product(

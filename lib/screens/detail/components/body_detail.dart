@@ -16,6 +16,7 @@ class BodyDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    resetSelect();
     return SingleChildScrollView(
       child: Column(
         children: [

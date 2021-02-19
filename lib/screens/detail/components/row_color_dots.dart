@@ -5,7 +5,7 @@ import 'package:tutorialscreenapp_flutter/models/Product.dart';
 import '../../../constant.dart';
 import '../../../size_config.dart';
 
-class RowColorDots extends StatelessWidget {
+class RowColorDots extends StatefulWidget {
   const RowColorDots({
     Key key,
     @required this.product,
@@ -14,20 +14,29 @@ class RowColorDots extends StatelessWidget {
   final Product product;
 
   @override
+  _RowColorDotsState createState() => _RowColorDotsState();
+}
+
+class _RowColorDotsState extends State<RowColorDots> {
+  @override
   Widget build(BuildContext context) {
     //demo is fixed index select color
-    int selectColor = 3;
+    int selectColor = selectColorIndex;
     return Padding(
       padding:
           EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
       child: Row(
         children: [
           ...List.generate(
-            product.colors.length,
+            widget.product.colors.length,
             (index) => ColorDot(
-              color: product.colors[index],
+              color: widget.product.colors[index],
               isSelected: selectColor == index,
-              pressColor: () {},
+              pressColor: () {
+                setState(() {
+                  selectColorIndex = index;
+                });
+              },
             ),
           ),
           Spacer(),
